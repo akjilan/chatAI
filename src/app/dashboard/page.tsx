@@ -1,10 +1,11 @@
 import React from "react";
+import Dashboard from "../components/dashboard/Dashboard";
 
 const page = () => {
   return (
-    <div className="text-red-700 pt-1">
-    <h1 className="text-4xl p-10 text-yellow-600">this is the dashboard</h1>
-  </div>
+    <div>
+      <Dashboard />
+    </div>
   );
 };
 
