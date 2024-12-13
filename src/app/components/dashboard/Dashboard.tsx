@@ -22,28 +22,28 @@ const Dashboard = () => {
     const fileInput = document.getElementById(
       "file-upload"
     ) as HTMLInputElement | null;
-
+  
     if (fileInput?.files) {
       const files = fileInput.files;
-
+  
       if (!files.length) {
         alert("Please select at least one file");
         return;
       }
-
+  
       const formData = new FormData();
       for (let i = 0; i < files.length; i++) {
-        formData.append("file", files[i]);
+        formData.append("files", files[i]); // Use 'files' as the key
       }
-
-      console.log(formData,"this is formdata");
-
+  
+      console.log(formData, "this is formdata");
+  
       try {
         const response = await fetch("http://127.0.0.1:8000/api/upload-pdf/", {
           method: "POST",
           body: formData,
         });
-
+  
         const result = await response.json();
         console.log("Response from server:", result);
       } catch (error) {
@@ -53,6 +53,7 @@ const Dashboard = () => {
       alert("Could not find file input");
     }
   };
+  
 
 
   useEffect(() => {
@@ -141,7 +142,6 @@ const Dashboard = () => {
               </>
             )}
           </div>
-
           <div>
             {isModalOpen && (
               <div className="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
